@@ -17,7 +17,16 @@ function resetValues() {
   bookForm.elements.pages.value = "";
 }
 
-function displayBooks() {}
+function displayBooks() {
+  while (userBooks.firstChild) {
+    userBooks.removeChild(userBooks.firstChild);
+  }
+  myLibrary.forEach((book) => {
+    const li = document.createElement("li");
+    li.textContent = `"${book.title}" by ${book.author} ${book.pages} pages`;
+    userBooks.appendChild(li);
+  });
+}
 
 showFormButton.addEventListener("click", function () {
   bookForm.style.display = "block";
