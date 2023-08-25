@@ -9,13 +9,15 @@ function addBookToLibrary() {
   const title = bookForm.elements.title.value;
   const author = bookForm.elements.author.value;
   const pages = bookForm.elements.pages.value;
-  myLibrary.push({ title, author, pages });
+  const read = bookForm.elements.checkBox.checked;
+  myLibrary.push({ title, author, pages, read });
 }
 
 function resetValues() {
   bookForm.elements.title.value = "";
   bookForm.elements.author.value = "";
   bookForm.elements.pages.value = "";
+  bookForm.elements.checkBox.checked = false;
 }
 
 function displayBooks() {
@@ -37,16 +39,16 @@ function displayBooks() {
     pagesParagraph.textContent = `${book.pages} pages`;
 
     const readButton = document.createElement("button");
+    readButton.textContent = book.read ? "Read" : "Not read";
     readButton.classList.add("readButton");
-    readButton.textContent = "Read";
-    readButton.addEventListener("click", function handleClick() {
-      const initialText = "Read";
 
-      if (readButton.textContent === initialText) {
-        readButton.textContent = "Not read";
+    readButton.addEventListener("click", function handleClick() {
+      if (book.read === true) {
+        book.read = false;
       } else {
-        readButton.textContent = initialText;
+        book.read = true;
       }
+      displayBooks();
     });
 
     const removeButton = document.createElement("button");
@@ -72,10 +74,17 @@ showFormButton.addEventListener("click", function () {
   myDialog.style.display = "block";
 });
 
+const closeFormButton = document.getElementById("closeFormButton");
+
+closeFormButton.addEventListener("click", () => {
+  myDialog.close();
+});
+
 myDialog.addEventListener("submit", function (event) {
   event.preventDefault();
   addBookToLibrary();
   resetValues();
   myDialog.style.display = "none";
   displayBooks();
+  console.log(myLibrary);
 });
