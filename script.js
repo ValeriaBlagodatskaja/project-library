@@ -1,6 +1,7 @@
 const showFormButton = document.getElementById("showFormButton");
 const bookForm = document.getElementById("bookForm");
 const userBooks = document.getElementById("userBooks");
+const myDialog = document.getElementById("myDialog");
 
 const myLibrary = [];
 
@@ -21,21 +22,60 @@ function displayBooks() {
   while (userBooks.firstChild) {
     userBooks.removeChild(userBooks.firstChild);
   }
-  myLibrary.forEach((book) => {
+  myLibrary.forEach((book, index) => {
+    const card = document.createElement("div");
+    card.classList.add("card");
+
     const li = document.createElement("li");
-    li.textContent = `"${book.title}" by ${book.author} ${book.pages} pages`;
-    userBooks.appendChild(li);
+    const titleParagraph = document.createElement("p");
+    titleParagraph.textContent = `"${book.title}"`;
+
+    const authorParagraph = document.createElement("p");
+    authorParagraph.textContent = `${book.author}`;
+
+    const pagesParagraph = document.createElement("p");
+    pagesParagraph.textContent = `${book.pages} pages`;
+
+    const readButton = document.createElement("button");
+    readButton.classList.add("readButton");
+    readButton.textContent = "Read";
+    readButton.addEventListener("click", function handleClick() {
+      const initialText = "Read";
+
+      if (readButton.textContent === initialText) {
+        readButton.textContent = "Not read";
+      } else {
+        readButton.textContent = initialText;
+      }
+    });
+
+    const removeButton = document.createElement("button");
+    removeButton.classList.add("removeButton");
+    removeButton.textContent = "Remove";
+    removeButton.addEventListener("click", () => {
+      myLibrary.splice(index, 1);
+      displayBooks();
+    });
+
+    li.appendChild(titleParagraph);
+    li.appendChild(authorParagraph);
+    li.appendChild(pagesParagraph);
+    li.appendChild(readButton);
+    li.appendChild(removeButton);
+
+    card.appendChild(li);
+    userBooks.appendChild(card);
   });
 }
 
 showFormButton.addEventListener("click", function () {
-  bookForm.style.display = "block";
+  myDialog.style.display = "block";
 });
 
-bookForm.addEventListener("submit", function (event) {
+myDialog.addEventListener("submit", function (event) {
   event.preventDefault();
   addBookToLibrary();
   resetValues();
-  bookForm.style.display = "none";
+  myDialog.style.display = "none";
   displayBooks();
 });
