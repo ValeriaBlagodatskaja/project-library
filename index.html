@@ -9,10 +9,12 @@
     <script src="script.js" defer></script>
   </head>
   <body>
-    <div class="header">
-      <h1>My library</h1>
-    </div>
-    <div class="content">
+    <header>
+      <div class="myLibrary">
+        <h1>My library</h1>
+      </div>
+    </header>
+    <main>
       <button id="showFormButton">+ Add book</button>
       <dialog open id="myDialog" style="display: none">
         <form method="dialog" id="bookForm">
@@ -34,6 +36,6 @@
         </form>
       </dialog>
       <ul class="userBooks" id="userBooks"></ul>
-    </div>
+    </main>
   </body>
 </html>
