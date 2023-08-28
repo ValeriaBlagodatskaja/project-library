@@ -77,7 +77,7 @@ showFormButton.addEventListener("click", function () {
 const closeFormButton = document.getElementById("closeFormButton");
 
 closeFormButton.addEventListener("click", () => {
-  myDialog.close();
+  myDialog.style.display = "none";
 });
 
 myDialog.addEventListener("submit", function (event) {

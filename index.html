@@ -12,26 +12,28 @@
     <div class="header">
       <h1>My library</h1>
     </div>
-    <button id="showFormButton">+ Add book</button>
-    <dialog open id="myDialog" style="display: none">
-      <form method="dialog" id="bookForm">
-        <button id="closeFormButton" type="button">X</button>
-        <h3>Add new book</h3>
-        <label for="title">Title:</label>
-        <input type="text" id="title" name="title" required />
-        <br />
-        <label for="author">Author:</label>
-        <input type="text" id="author" name="author" required />
-        <br />
-        <label for="pages">Total pages:</label>
-        <input type="number" id="pages" name="pages" required />
-        <br />
-        <label for="checkBox">Have you read it?</label>
-        <input type="checkbox" id="checkBox" name="checkBox" />
-        <br />
-        <button type="submit">Submit</button>
-      </form>
-    </dialog>
-    <ul id="userBooks"></ul>
+    <div class="content">
+      <button id="showFormButton">+ Add book</button>
+      <dialog open id="myDialog" style="display: none">
+        <form method="dialog" id="bookForm">
+          <button id="closeFormButton" type="button">X</button>
+          <h3>Add new book</h3>
+          <label for="title">Title:</label>
+          <input type="text" id="title" name="title" required />
+          <br />
+          <label for="author">Author:</label>
+          <input type="text" id="author" name="author" required />
+          <br />
+          <label for="pages">Total pages:</label>
+          <input type="number" id="pages" name="pages" required />
+          <br />
+          <label for="checkBox">Have you read it?</label>
+          <input type="checkbox" id="checkBox" name="checkBox" />
+          <br />
+          <button type="submit">Submit</button>
+        </form>
+      </dialog>
+      <ul class="userBooks" id="userBooks"></ul>
+    </div>
   </body>
 </html>
