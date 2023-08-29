@@ -2,6 +2,7 @@ const showFormButton = document.getElementById("showFormButton");
 const bookForm = document.getElementById("bookForm");
 const userBooks = document.getElementById("userBooks");
 const myDialog = document.getElementById("myDialog");
+const backdrop = document.getElementById("backdrop");
 
 const myLibrary = [];
 
@@ -72,19 +73,35 @@ function displayBooks() {
 
 showFormButton.addEventListener("click", function () {
   myDialog.style.display = "block";
+  backdrop.style.display = "block";
 });
 
 const closeFormButton = document.getElementById("closeFormButton");
 
 closeFormButton.addEventListener("click", () => {
   myDialog.style.display = "none";
+  backdrop.style.display = "none";
+});
+
+backdrop.addEventListener("click", function () {
+  myDialog.style.display = "none";
+  backdrop.style.display = "none";
+});
+
+document.addEventListener("keydown", function (event) {
+  if (event.key === "Escape") {
+    myDialog.style.display = "none";
+    backdrop.style.display = "none";
+  }
 });
 
 myDialog.addEventListener("submit", function (event) {
   event.preventDefault();
   addBookToLibrary();
   resetValues();
+  backdrop.style.display = "none";
   myDialog.style.display = "none";
   displayBooks();
+
   console.log(myLibrary);
 });
