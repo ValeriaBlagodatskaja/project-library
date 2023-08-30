@@ -42,12 +42,16 @@ function displayBooks() {
     const readButton = document.createElement("button");
     readButton.textContent = book.read ? "Read" : "Not read";
     readButton.classList.add("readButton");
+    if (!book.read) {
+      readButton.classList.add("notReadButton");
+    }
 
     readButton.addEventListener("click", function handleClick() {
-      if (book.read === true) {
-        book.read = false;
+      book.read = !book.read;
+      if (book.read) {
+        readButton.style.backgroundColor = "green";
       } else {
-        book.read = true;
+        readButton.style.backgroundColor = "lightcoral";
       }
       displayBooks();
     });

@@ -171,14 +171,14 @@ li {
   background-color: lightgreen;
 }
 
-.readButton:hover {
-  background-color: #0dbf40;
-}
-
 .removeButton {
   background-color: #f0eef1;
 }
 
 .removeButton:hover {
   background-color: darkgrey;
+}
+
+.notReadButton {
+  background-color: lightcoral;
 }
