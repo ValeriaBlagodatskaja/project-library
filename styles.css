@@ -95,11 +95,6 @@ li {
   font-size: 18px;
 }
 
-.checkBoxContainer input[type="checkbox"]:checked + label::before {
-  color: black;
-  background: white;
-}
-
 #closeFormButton {
   background-color: #f5f5f5;
   color: grey;
