@@ -60,11 +60,15 @@ function displayBooks() {
       displayBooks();
     });
 
+    const buttonContainer = document.createElement("div");
+    buttonContainer.classList.add("buttonContainer");
+    buttonContainer.appendChild(readButton);
+    buttonContainer.appendChild(removeButton);
+
     li.appendChild(titleParagraph);
     li.appendChild(authorParagraph);
     li.appendChild(pagesParagraph);
-    li.appendChild(readButton);
-    li.appendChild(removeButton);
+    li.appendChild(buttonContainer);
 
     card.appendChild(li);
     userBooks.appendChild(card);
